@@ -1,5 +1,5 @@
 {
-    "name": "tomashkhamlai/overdose-testimonials",
+    "name": "tkhamlai/module-testimonials",
     "description": "N/A",
     "require": {
         "php": "~7.3.0||~7.4.0",
