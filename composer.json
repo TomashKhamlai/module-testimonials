@@ -1,0 +1,29 @@
+{
+    "name": "tomashkhamlai/overdose-testimonials",
+    "description": "N/A",
+    "require": {
+        "php": "~7.3.0||~7.4.0",
+        "magento/framework": "103.0.*"
+    },
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Overdose\\Testimonials\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "latest": "dev",
+            "stable": "master"
+        }
+    },
+    "version": "100.0.0"
+}
