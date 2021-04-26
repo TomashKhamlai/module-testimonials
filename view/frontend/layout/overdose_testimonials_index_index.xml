@@ -15,7 +15,19 @@
                             <item name="testimonials" xsi:type="array">
                                 <item name="component" xsi:type="string">uiComponent</item>
                                 <item name="config" xsi:type="array">
-                                    <item name="template" xsi:type="string">Overdose_Testimonials/testimonials-test</item>
+                                    <item name="template" xsi:type="string">Overdose_Testimonials/wrapper</item>
+                                </item>
+                                <item name="children" xsi:type="array">
+                                    <item name="createTestimonialComponent" xsi:type="array">
+                                        <item name="component" xsi:type="string">Overdose_Testimonials/js/view/popUpForm</item>
+                                        <item name="displayArea" xsi:type="string">testimonials-form</item>
+                                        <item name="config" xsi:type="array">
+                                            <item name="element" xsi:type="string">#testimonials-form</item>
+                                        </item>
+                                        <item name="options" xsi:type="array">
+                                            <item name="responsive" xsi:type="boolean">true</item>
+                                        </item>
+                                    </item>
                                 </item>
                             </item>
                         </item>
