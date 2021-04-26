@@ -1,0 +1,15 @@
+<?php declare(strict_types=1);
+    /** @var Overdose\Testimonials\Block\Testimonials $block */
+?>
+
+<div id="testimonials" data-bind="scope: 'testimonials'" class="testimonials-container">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "#testimonials": {
+            "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+        }
+    }
+</script>
