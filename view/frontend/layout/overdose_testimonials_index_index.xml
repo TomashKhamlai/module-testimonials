@@ -22,10 +22,22 @@
                                         <item name="component" xsi:type="string">Overdose_Testimonials/js/view/popUpForm</item>
                                         <item name="displayArea" xsi:type="string">testimonials-form</item>
                                         <item name="config" xsi:type="array">
-                                            <item name="element" xsi:type="string">#testimonials-form</item>
-                                        </item>
-                                        <item name="options" xsi:type="array">
-                                            <item name="responsive" xsi:type="boolean">true</item>
+                                            <item name="popUpForm" xsi:type="array">
+                                                <item name="element" xsi:type="string">#testimonials-form</item>
+                                                <item name="options" xsi:type="array">
+                                                    <item name="responsive" xsi:type="boolean">true</item>
+                                                    <item name="buttons" xsi:type="array">
+                                                        <item name="save" xsi:type="array">
+                                                            <item name="text" xsi:type="string" translate="true">Publish</item>
+                                                            <item name="class" xsi:type="string">action primary action-publish-testimonial</item>
+                                                        </item>
+                                                        <item name="cancel" xsi:type="array">
+                                                            <item name="text" xsi:type="string" translate="true">Cancel</item>
+                                                            <item name="class" xsi:type="string">action secondary action-hide-popup</item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
                                         </item>
                                     </item>
                                 </item>
