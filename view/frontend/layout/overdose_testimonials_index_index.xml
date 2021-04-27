@@ -18,14 +18,18 @@
                                     <item name="template" xsi:type="string">Overdose_Testimonials/wrapper</item>
                                 </item>
                                 <item name="children" xsi:type="array">
-                                    <item name="createTestimonialComponent" xsi:type="array">
+                                    <item name="testimonialComponent" xsi:type="array">
                                         <item name="component" xsi:type="string">Overdose_Testimonials/js/view/popUpForm</item>
                                         <item name="displayArea" xsi:type="string">testimonials-form</item>
                                         <item name="config" xsi:type="array">
+                                            <item name="deps" xsi:type="array">
+                                                <item name="0" xsi:type="string">testimonialsProvider</item>
+                                            </item>
                                             <item name="popUpForm" xsi:type="array">
-                                                <item name="element" xsi:type="string">#testimonials-form</item>
+                                                <item name="element" xsi:type="string">#testimonials-form-wrapper</item>
                                                 <item name="options" xsi:type="array">
                                                     <item name="responsive" xsi:type="boolean">true</item>
+                                                    <item name="innerScroll" xsi:type="boolean">true</item>
                                                     <item name="buttons" xsi:type="array">
                                                         <item name="save" xsi:type="array">
                                                             <item name="text" xsi:type="string" translate="true">Publish</item>
@@ -39,8 +43,22 @@
                                                 </item>
                                             </item>
                                         </item>
+                                        <item name="provider" xsi:type="string">testimonialsProvider</item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="only-fieldset" xsi:type="array">
+                                                <item name="component" xsi:type="string">uiComponent</item>
+                                                <item name="config" xsi:type="array">
+                                                    <item name="deps" xsi:type="array">
+                                                        <item name="0" xsi:type="string">testimonialsProvider</item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
                                     </item>
                                 </item>
+                            </item>
+                            <item name="testimonialsProvider" xsi:type="array">
+                                <item name="component" xsi:type="string">uiComponent</item>
                             </item>
                         </item>
                     </argument>

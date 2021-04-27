@@ -17,7 +17,8 @@ define([
 
     return Component.extend({
         defaults: {
-            template: 'Overdose_Testimonials/popup-form',
+            template: 'Overdose_Testimonials/popup',
+            formTemplate: 'Overdose_Testimonials/form',
             isFormPopUpVisible: ko.observable(false)
         },
 
