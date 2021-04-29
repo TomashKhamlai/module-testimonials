@@ -37,15 +37,14 @@ class Post implements HttpPostActionInterface
     public function execute()
     {
         $resultJsonObject = $this->resultFactory->create();
-
         $data = $this->request->getParams();
-        if ($data) {
-            $recordData = [
-                'author' => $data['author']
-            ];
 
+        if ($data) {
             $resultJsonObject->setData([
-                'data' => $recordData
+                'data' => [
+                    'author' => $data['author'],
+                    'message' => $data['message'],
+                ]
             ]);
 
             return $resultJsonObject;
