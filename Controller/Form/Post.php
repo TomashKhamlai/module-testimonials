@@ -44,6 +44,7 @@ class Post implements HttpPostActionInterface
                 'data' => [
                     'author' => $data['author'],
                     'message' => $data['message'],
+                    'image' => $data['image'][0]['file'],
                 ]
             ]);
 
