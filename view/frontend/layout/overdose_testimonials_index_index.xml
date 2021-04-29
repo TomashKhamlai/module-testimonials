@@ -18,6 +18,10 @@
                                     <item name="template" xsi:type="string">Overdose_Testimonials/wrapper</item>
                                 </item>
                                 <item name="children" xsi:type="array">
+                                    <item name="messages" xsi:type="array">
+                                        <item name="component" xsi:type="string">Magento_Ui/js/view/messages</item>
+                                        <item name="displayArea" xsi:type="string">messages</item>
+                                    </item>
                                     <item name="testimonialComponent" xsi:type="array">
                                         <item name="component" xsi:type="string">Overdose_Testimonials/js/view/popUpForm</item>
                                         <item name="displayArea" xsi:type="string">testimonials-form</item>
@@ -45,11 +49,32 @@
                                         </item>
                                         <item name="provider" xsi:type="string">testimonialsProvider</item>
                                         <item name="children" xsi:type="array">
-                                            <item name="only-fieldset" xsi:type="array">
+                                            <item name="testimonial-fieldset" xsi:type="array">
                                                 <item name="component" xsi:type="string">uiComponent</item>
                                                 <item name="config" xsi:type="array">
                                                     <item name="deps" xsi:type="array">
                                                         <item name="0" xsi:type="string">testimonialsProvider</item>
+                                                    </item>
+                                                </item>
+                                                <item name="displayArea" xsi:type="string">only-fieldset</item>
+                                                <item name="children" xsi:type="array">
+                                                    <item name="author" xsi:type="array">
+                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                        <item name="config" xsi:type="array">
+                                                            <item name="customScope" xsi:type="string">testimonialComponentScope</item>
+                                                            <item name="template" xsi:type="string">ui/form/field</item>
+                                                            <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                        </item>
+                                                        <item name="provider" xsi:type="string">testimonialsProvider</item>
+                                                        <item name="dataScope" xsi:type="string">testimonialComponentScope.author</item>
+                                                        <item name="label" xsi:type="string">Author</item>
+                                                        <item name="validation" xsi:type="array">
+                                                            <item name="min_text_length" xsi:type="number">1</item>
+                                                            <item name="max_text_length" xsi:type="number">64</item>
+                                                            <item name="pattern" xsi:type="string">^([\w]{2,})+\s+([\w\s]{2,})+$</item>
+                                                            <item name="no-marginal-whitespace" xsi:type="boolean">true</item>
+                                                            <item name="required-entry" xsi:type="boolean">true</item>
+                                                        </item>
                                                     </item>
                                                 </item>
                                             </item>

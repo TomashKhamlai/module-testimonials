@@ -3,13 +3,13 @@ define([
     'jquery',
     'ko',
     'Magento_Ui/js/modal/modal',
-    'uiRegistry'
+    'Overdose_Testimonials/js/action/submit'
 ], function (
     Component,
     $,
     ko,
     modal,
-    registry
+    submitAction
 ) {
     'use strict';
 
@@ -36,6 +36,14 @@ define([
             return this;
         },
 
+        submitTestimonial: function (event) {
+            let self = this,
+                formData = self.source.get('testimonialComponentScope');
+
+            console.log('Time for a "startProcess" event');
+            submitAction(formData);
+        },
+
         onClosePopUp: function () {
             this.constructPopUp().closeModal();
         },
@@ -44,19 +52,17 @@ define([
             let self = this,
                 buttons;
 
-            if(!popUp) {
+            if (!popUp) {
                 buttons = this.popUpForm.options.buttons;
-                this.popUpForm.options.buttons = [
-                    {
-                        text: buttons.save.text ? buttons.save.text : $t('Publish'),
-                        class: buttons.save.class ? buttons.save.class : 'action primary action-publish-testimonial'
-                    },
-                    {
-                        text: buttons.cancel.text ? buttons.cancel.text : $t('Cancel'),
-                        class: buttons.cancel.class ? buttons.cancel.class : 'action secondary action-hide-popup',
-                        click: this.onClosePopUp.bind(this)
-                    }
-                ];
+                this.popUpForm.options.buttons = [{
+                    text: buttons.save.text ? buttons.save.text : $t('Publish'),
+                    class: buttons.save.class ? buttons.save.class : 'action primary action-publish-testimonial',
+                    click: self.submitTestimonial.bind(self)
+                }, {
+                    text: buttons.cancel.text ? buttons.cancel.text : $t('Cancel'),
+                    class: buttons.cancel.class ? buttons.cancel.class : 'action secondary action-hide-popup',
+                    click: self.onClosePopUp.bind(self)
+                }];
 
                 this.popUpForm.options.closed = function () {
                     self.isFormPopUpVisible(false);

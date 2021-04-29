@@ -1,6 +1,11 @@
-<form class="form new-testimonial-form">
-    <label for="test-input">
-        Label
-        <input id="test-input" name="test" type="text" />
-    </label>
+<form class="form form-new-testimonial"
+      id="new-testimonial-form"
+      type="post"
+      enctype="multipart/form-data"
+      data-bind="event: {submit: submitTestimonial}">
+    <div id="testimonial-form-data" class="fieldset testimonial" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+        <!-- ko foreach: getRegion('only-fieldset') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+    </div>
 </form>
