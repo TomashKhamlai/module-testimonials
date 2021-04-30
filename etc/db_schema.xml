@@ -3,11 +3,12 @@
 <schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
     <table name="testimonials" resource="default" engine="innodb"  comment="Testimonials">
         <column xsi:type="int"      name="entity_id"    nullable="false"    comment="Entity ID" padding="10" unsigned="false"  identity="true" />
-        <column xsi:type="varchar"  name="title"        nullable="false"    comment="Title" length="64" />
         <column xsi:type="varchar"  name="author"       nullable="false"    comment="Author" length="64" />
         <column xsi:type="text"     name="message"      nullable="false"    comment="Message" />
-        <column xsi:type="varchar"  name="image_url"    nullable="false"    comment="Image URL" length="255" />
+        <column xsi:type="varchar"  name="image"    nullable="false"    comment="Image URL" length="255" />
         <column xsi:type="smallint" name="store_id"     nullable="false"    comment="Store ID" padding="5" unsigned="true" default="0" />
+        <column xsi:type="timestamp"    name="created_at"   nullable="false"    comment="Created at"    default="CURRENT_TIMESTAMP"  on_update="false" />
+        <column xsi:type="timestamp"    name="updated_at"   nullable="false"    comment="Updated at"    default="CURRENT_TIMESTAMP"  on_update="true" />
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="entity_id" />
         </constraint>

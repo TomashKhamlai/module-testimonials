@@ -8,6 +8,9 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
+use Magento\Framework\Exception\InputException;
+use Magento\Framework\Exception\LocalizedException;
+use Overdose\Testimonials\Model\TestimonialsManagement;
 
 class Post implements HttpPostActionInterface
 {
@@ -23,13 +26,20 @@ class Post implements HttpPostActionInterface
     private $request;
 
     /**
+     * @var TestimonialsManagement
+     */
+    private $testimonialsManagement;
+
+    /**
      * @param JsonFactory $resultFactory
      * @param Context $context
      */
     public function __construct(
+        TestimonialsManagement $testimonialsManagement,
         JsonFactory $resultFactory,
         Context $context
     ) {
+        $this->testimonialsManagement = $testimonialsManagement;
         $this->resultFactory = $resultFactory;
         $this->request = $context->getRequest();
     }
@@ -40,15 +50,21 @@ class Post implements HttpPostActionInterface
         $data = $this->request->getParams();
 
         if ($data) {
-            $resultJsonObject->setData([
-                'data' => [
+            $dataObject = [
                     'author' => $data['author'],
                     'message' => $data['message'],
                     'image' => $data['image'][0]['file'],
-                ]
-            ]);
+                ];
 
-            return $resultJsonObject;
+            try {
+                $this->testimonialsManagement->create($dataObject);
+            } catch (InputException $e) {
+                return $resultJsonObject->setData($e->getErrors());
+            } catch (LocalizedException $e) {
+                return $resultJsonObject->setData(['status' => 'empty']);
+            }
+
+            return $resultJsonObject->setData(['status' => 'created']);
         }
 
         return false;

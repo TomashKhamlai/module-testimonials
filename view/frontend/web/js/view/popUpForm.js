@@ -41,7 +41,30 @@ define([
                 formData = self.source.get('testimonialComponentScope');
 
             console.log('Time for a "startProcess" event');
-            submitAction(formData);
+            submitAction(formData)
+                .fail(
+                    function (response) {
+                        let error;
+                        try {
+                            error = JSON.parse(response.responseText);
+                        } catch (e) {
+                            error = {
+                                message: e.getText()
+                            };
+                        }
+                    }
+                ).success(
+                function (response) {
+                    if (response.responseType !== 'error') {
+                        console.log(response);
+                    }
+                }
+            ).always(
+                function () {
+                    console.log('Time for a "stopProcess" event');
+                    self.onClosePopUp();
+                }
+            );
         },
 
         onClosePopUp: function () {

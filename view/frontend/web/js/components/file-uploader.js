@@ -17,7 +17,7 @@ define([
         initialize: function () {
             self = this;
             this._super();
-            //this.updateRect()
+
             $(this.dropZoneSelector).resize(
                 function () {
                     this.updateRect();
@@ -52,6 +52,8 @@ define([
         },
 
         clearCoords: function () {
+            let lastCx = this.cx;
+            let lastCy = this.cy;
             this.cx('50%');
             this.cy('50%');
             this.updateRect();
@@ -65,7 +67,7 @@ define([
         },
 
         updateCoords: function (data, event) {
-            console.log(event.clientX , ' - ', this.rect.left, ' ', event.clientX, ' - ', this.rect.left);
+            // console.log(event.clientX , ' - ', this.rect.left, ' ', event.clientX, ' - ', this.rect.left);
             this.cx(event.clientX - this.rect.left + 'px');
             this.cy(event.clientY - this.rect.top + 'px');
 
